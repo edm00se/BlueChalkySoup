@@ -1,0 +1,27 @@
+.img-circle {
+    border-radius: 50%
+}
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto
+}
+.img-center {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.reveal .slides > section, .reveal .slides > section > section {
+	padding-top: initial !important;
+}
+.row {
+	width: 100%;
+}
+.col-xs-6 {
+    width: 50%
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
