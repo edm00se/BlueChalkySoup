@@ -47,7 +47,14 @@ To deploy this to a server, you will need to ensure the environment variable for
 ### Format of This Slide Deck
 This is a [reveal.js](//lab.hakim.se/reveal-js/) presentation, with the content primarily in markdown (GitHub flavored, which allows pass-through HTML). It scales (pretty well) on all devices and is served on top of a NodeJS/Express server stack. This Express app implements a socket.io connection, allowing the presenter to control (with authorization) the status and progression through the slides during the session. On completion, the presenter disconnects, and all viewers of the slides are given full and independent movement throughout.
 
-This application stack is loosely based on the [Revealer.js app](//github.com/shameerc/Revealer.js) on GitHub. The content of the slides is written fully in GitHub flavored markdown. This implementation also makes use of EJS templating, for a pure HTML (vs jade) template experience.
+This application stack is loosely based on the [Revealer.js app](//github.com/shameerc/Revealer.js) in addition to elements taken from a couple other projects which achieved similar results but didn't quite make the cut. I couldn't find a single project which achieved all of:
+
+1. using (a current version of) Express
+2. using a WebSocket with Express (that wasn't outdated under the current API)
+3. pushed more than just the event, but the actual partial page (#/1/2) state to the "current" slide
+4. used templating other than jade (which is apparently popular, but I like seeing my HTML tags, evidently); this lets the base presentation and _/control_ users see the same presentation
+
+At best I was getting 2 / 4 features, so I hacked together this. The content of the slides is written fully in GitHub flavored markdown (via a reveal.js plugin).
 
 
 ### Format of the Presentation
