@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="an IBM ConnectED 2015 Chalk Talk un-session">
+	<meta name="author" content="Eric McCormick">
+	<title>Blue Chalky Soup</title>
+	<!-- Font Awesome! -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="components/reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="components/reveal.js/css/theme/night.css" id="theme">
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? './components/reveal.js/css/print/pdf.css' : './components/reveal.js/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+
+	<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		
+		<section data-markdown>
+			<script type="text/template">
+				## ~~From Soup to Sandwich~~
+				## Chalky Soup
+				
+
+				#### Making MVC Java Classes and Front-end Development Work for You
+				<br />
+				
+				
+				Presented, _with no room AV_,
+				
+				[by Eric McCormick](//twitter.com/edm00se)
+
+			</script>
+		</section>
+		
+		<section>
+			<section data-markdown>
+				<script type="text/template">
+					## This ~~Session~~ Is A Chalk Talk
+					
+					>"A ConnectED ChalkTalk is a relaxed,  interactive discussion, with no provided media or AV. The purpose of the discussion is to gather input, feedback, and learn from each other."
+					
+					I am meant to facilitate a discussion. These slides will further as a supplementary aid, just not a primary visual aid.
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## This Chalk Talk
+					
+					Format for this Chalk Talk (7am-7:45am):
+					
+					
+					| Sequence  		| Speaker		| Time			|
+					| ------------- 	| ------------- | ------------- |
+					| Introduction  	| Eric			| 3 min 		|
+					| Topics to Cover 	| Eric			| 2 min 		|
+					| 1: Java M-V-C		| Eric			| 5 min			|
+					| Discussion		| Group			| 5 min			|
+					| 2: Bootstrap(CSS) | Eric			| 5 min			|
+					| Discussion		| Group			| 5 min			|
+					| 3: AngularJS		| Eric			| 5 min			|
+					| Discussion		| Group			| 5 min			|
+					| Wrap Up, Q&A		| Eric/Group	| 10 min		|
+					
+				</script>
+			</section>
+		</section>
+		<!-- Introduction -->
+		<section>
+			<section data-markdown><!-- Who I am -->
+				<script type="text/template">
+					## Who Am I?
+					
+					<p class="fragment grow">Eric McCormick</p>
+
+					<img src="img/profile.jpg" class="img-circle img-responsive img-center"  />
+
+					Twitter: [@edm00se](//twitter.com/edm00se)<br />
+					Blog: [edm00se.io](//edm00se.io)<br />
+					XPages developer since ‘11<br />
+					Java developer on and off since ‘02<br />
+
+					Experimented with WebSphere in college
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					&nbsp;
+					[<img src="img/Champion.png" class="img-responsive img-center" />](//www.ibm.com/developerworks/community/blogs/ibmchampion/entry/announcing_the_2015_class_of_ibm_champions_for_ics?lang=en)
+
+					I was pleasantly surprised<!-- .element: class="fragment" data-fragment-index="1" -->
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## What Is My Goal?
+
+					1. A harmonious development environment for myself and any development staff at my company
+					2. A unified ~~theory~~ practice of development, for consistent cross-platform and cross-app development behavior
+					3. Making all application logic and data consistently accessible across separate, but organic, systems
+					4. Making contracted development work more easily performed
+					5. Automating everything I can
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## I Want It All
+
+					<img src="img/deadpool_loot.png" class="img-responseive img-center" />
+
+				</script>
+			</section>
+		</section>
+
+		<section data-markdown><!-- Audience assumptions -->
+			<script type="text/template">
+				## Target Audience
+				
+				You should be a Domino/XPage developer with a solid understanding of the XPages development and the Notes/Domino API.
+
+				I assume you know:
+
+				* what is, and how to implement, a Managed Bean
+				* what can be a data source in an XPage
+				* what a CSS framework is (what Bootstrap3 is/does)
+				* what a client-side JavaScript framework is ([AngularJS](//angularjs.org/), [Ember](//emberjs.com/), [Backbone](//backbonejs.org/), [Dojo](//dojotoolkit.org/), etc)
+				
+			</script>
+		</section>
+		<section>
+			<!-- Topics to Cover -->
+			<section data-markdown>
+				<script type="text/template">
+					## Topics
+					
+					#### Segregation of Application Into Service Layers
+
+					* a decoupling of the layers of your application into micro-services
+					* separates the primary application logic into its own classes
+					* keeps the UI logic all at the UI level
+					* keeps styling and presentation out of the logic
+
+					This helps to keep all your code readable by not just yourself, but others.
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Application Layers (as I see them)
+
+					* data store / DB (NSF)
+						* provide **data** to
+					* primary application classes (server elements for data objects, controllers for behavior, server actions)
+						* provide **application behavior** via
+					* servlets (RESTful or otherwise), XPage bindings (simple, EL to bean, or data object)
+						* provides **interface** to
+					* UI layer (where the client-side logic lives)
+					
+					
+					
+				</script>
+			</section>
+		</section>
+		<section>
+			<section data-markdown>
+				<script type="text/template">
+					## What [M-V-C](//edm00se.io/xpages/unraveling-the-mvc-mysteries) Is
+					
+					A great development architectural practice, which segregates your code into aspects, which govern solely:
+					
+					* the interactions of your data objects with the data store (Model)
+					* the interaction of your data objects with your presentation layer (View)
+					* the interaction of your **application logic** (Controller, where the rubber meets the road)
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Key Take Away
+
+					In XPages, out of the box, we have controls (_xp:_ and _xe:_) which let us add widgets into/onto our presentation layer (the XPage or Custom Control) and script in (via _JS_, _SSJS_, or _EL_) application logic via events, partial refreshes, rendering properties, validation blocks, and other bindings.
+
+					SSJS is perfectly fine for simple applications, but can easily lead to <em>spaghetti code</em><sup>™</sup> on larger applicaitons with more complex logic structures.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## <em>Spaghetti Code</em><sup>™</sup>?
+
+					Novice thought: "But I put my (SSJS) code into script libraries."
+
+					Long story short, [SSJS is a crutch](//timtripcony.com/ssjs-is-a-crutch/) (at least for non-trivial applications).
+
+					It works, but [the overarching answer](//www.linkedin.com/groups/What-are-top-XPages-performance-3707727.S.230901244) is to [use the Java roots](//www.qtzar.com/xpage-java-roots/) of XPages for [better performance, structure](//stackoverflow.com/questions/24821295/quantify-performance-gain-when-using-java-instead-of-ssjs), and sanity (your mileage may vary).
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## But Why M-V-C and What If I&#8217;m Not Comfortable?
+
+					My recommendation: **start small, just start**.
+
+					* create your controller class
+					* make it a managed bean
+					* use it (via EL) to perform your rendered, workflow, and validation computations
+
+					This should help you get your feet wet. With XPages almost exclusively ([OoB](//en.wikipedia.org/wiki/Out_of_the_box_feature)) using the NSF as the data store (with potential ComputeWithForm for loose _schema_, aka- Model) and controls as the presentation(V), this means that you only _need_ to use a controller for an _abbreviated M-V-C approach_.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Example
+					Simple validation via managed bean.
+
+					```java
+					
+					package com.eric.sample
+
+					import com.everything.i.need.*;
+
+					public class AwesomeController implements Serializable {
+						...
+						private String someAwesomeProperty;
+
+						public AwesomeController(){}
+
+						public boolean validateMyProperty(){
+							boolean tmpVal = false;
+							if( this.someAwesomeProperty != null ){
+								tmpVal = true;
+							}
+							return tmpVal;
+						}
+
+					}
+
+					```
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Example
+
+					Binding to a Control in an XPage
+
+					```xml
+
+					< ?xml version="1.0" encoding="UTF-8">
+					<xp:view>
+						xmlns:xp="http://www.ibm.com/xsp/core">
+						<xp:inputText
+							id="inputText"
+							value="#{myBean.someAwesomeProperty}"
+							validator="#{myBean.validateMyProperty}">
+						</xp:inputText>
+					</xp:view>
+
+					```
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## But Why Start With a Managed Bean?
+					
+					Your application logic is now easily used in:
+
+					* XPages<!-- .element: class="fragment" data-fragment-index="1" -->
+					* a RESTful servlet<!-- .element: class="fragment" data-fragment-index="2" -->
+					* other service<!-- .element: class="fragment" data-fragment-index="3" -->
+					
+					Your code will be [more easily maintained, read, and ported to other systems or applications](//frostillic.us/blog/posts/E8C88D2333F751BC85257DB00080AF32).
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Structure Your App Now
+
+					It beats the heck out of hacking on functionality while searching for where the relevent code is, without being certain you got it all.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Discussion: M-V-C / App Structure
+
+					* Keep on target with application structure
+					* Do you use M-V-C principles?
+					* What are your positive/negative experiences?
+					* Lessons learned
+					* Alternative approaches?
+
+				</script>
+			</section>
+		</section>
+
+		<!-- 2- Bootstrap/CSS -->
+		<section>
+			<section data-markdown>
+				<script type="text/template">
+					## CSS Frameworks
+
+					The [Wikipedia article on CSS Frameworks](//en.wikipedia.org/wiki/CSS_frameworks) lists 20, and that is in no way a complete listing.
+
+					CSS Frameworks
+
+					> ...are pre-prepared software frameworks that are meant to allow for easier, more standards-compliant web design using the Cascading Style Sheets language. Most of these frameworks contain at least a grid.
+
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## Layouts With Benefits
+
+					Remember that [snafu with the XPage Mobile Controls](//www.notesin9.com/2014/11/04/xpages-and-ios8-update-6-the-fix-is-here/) a little while back?
+
+					IBM did, after a period of time, get an Interim Fix to correct the breakage. It also was an issue unique to iOS 8, but [this sort of thing has happened before, with Android](//github.com/unplugged/unplugged-controls/issues/405).
+
+					Why do I prefer CSS based widgets in place of an OS specific control? Web standards mean that a (properly implemented) CSS framework won't just break on a whim. Long story short, the more web standards compliance we have can minimize any uniqueness of implementation (and potential for random breakage).
+
+					Aka- my app shouldn't break, just because my user upgraded their OS.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Popularity
+
+					[Bootstrap](//getbootstrap.com/) (formerly Twitter Bootstrap) has gained considerable popularity in the web application space.
+
+					Currently the most starred [project on GitHub](//github.com/search?q=stars:%3E1&s=stars&type=Repositories).
+
+					It has also gained considerable adoption in the XPage community, spurning many to make use of custom (manual) adaptations and [Bootstrap4XPages](//bootstrap4xpages.com/).
+
+					The November 2014 release (901v00_10) of the [Extension Library includes Bootstrap](//www.openntf.org/main.nsf/blog.xsp?permaLink=PWIS-9QZTH2) and jQuery.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Other Than Bootstrap
+
+					There are other CSS frameworks than Bootstrap, each with their advntages or dependencies.
+
+					One great example is [ZURB Foundation](//foundation.zurb.com/). Many regard Foundation as an excellent framework, but one with which to build your own version of a CSS framework.
+
+					Both Foundation and Bootstrap have class definitions with required tag wrappings and are customizable. A different framework can fit your needs, but Bootstrap definitely is the popular kid (and posisbly the easiest to implement in XPages, at the moment).
+
+					There are more CSS frameworks than I can count or name here.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## CSS Grids
+
+					Grids are designed to make the responsive nature of CSS frameworks behave in a consistent fashion, across devices and screen sizes (and resolutions), according to their tags assigned classes.
+
+					The responsive grid behavior, as [demoed by Bootstrap](//getbootstrap.com/examples/grid/), illustrates this somewhat clearly. My recommendation: open the link in a desktop browser, and scale the size of your browser window to view how it adapts to different resolutions.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Bootstrap Specifics
+
+					By default, requires jQuery.
+
+					Unless you use another JavaScript library/framework adaptation, like [UI-Bootstrap](//angular-ui.github.io/bootstrap/), an AngularJS based implementation.
+
+					You _can_ use the Bootstrap CSS without jQuery (or another JS implementation, like UI-Bootstrap), but it will break any JS dependent features.
+
+					Comes with some nifty icons, glyphicons. These are nice, but certainly far from all-inclusive.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Font Icons
+
+					A huge door opens up when the need to download (most) images for styling goes away. By having vector based icons as a font, implementation is as easy as assigning a class to an HTML tag, and away you go. This is done all without the dependency on any JavaScript or additional XHRs to load images (like many of the Dojo widgets rely on for states, like hover, such as dijit.form.Button, bane of my existence).
+
+					My favorite icon font is [Font Awesome](//fortawesome.github.io/Font-Awesome/). It "was designed for Bootstrap" and has lots of goodies.
+
+					<i class="fa fa-beer fa-2"></i>
+
+					Which only requires:
+					```html
+						<i class="fa fa-beer"></i>
+					```
+				</script>
+			</section>
+
+			<section data-markdown><!-- Discussion! -->
+				<script type="text/template">
+					## Discussion: CSS Frameworks / Bootstrap
+
+					* Keep on target with CSS frameworks
+					* Do you use a CSS framework?
+					* What are your positive/negative experiences?
+					* Lessons learned
+					* Alternative approaches?
+
+				</script>
+			</section>
+		</section>
+		
+		<!-- AngularJS/CSJS -->
+		<section>
+			<section data-markdown>
+				<script type="text/template">
+					## A JavaScript Framework Explosion
+
+					There are many JavaScript frameworks and libraries that can make our lives as developers easier, and make the applications we build more:
+
+					* modern
+					* mobile friendly
+					* capable of using things like [Web Sockets](//developer.mozilla.org/en-US/docs/WebSockets) ("real"-time data!)
+					* and other fancy new-fangled things which automate what used to be more difficult
+					* plus more than I can fit here
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## But Why?
+
+					Many of these frameworks take an MVC/MVVM/MV* approach. For the same reasons you should structure your code into either MVC or MVC-like structures are the same reason you should do so for your client-side code.
+
+					It's not just for compartmentalization, it's for sanity.
+					
+					[Quora discussion](//www.quora.com/When-does-it-make-sense-to-use-an-MVC-framework-for-JavaScript) on the why and confusion of picking a framework/library.
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## Sample Features: From AngularJS
+
+					What makes AngularJS awesome (and there is definite commonality with most frameworks) generally boils down to a few key things.
+
+					* bi-directional data binding (all data models by default auto-update their other references on data change, within the scope)
+					* templates (via ng-include or ng-route)
+					* OoB directives, services, filters, and more
+					* dependency injection
+					* unit testing (AngularJS was developed with e2e testing in mind, and docs examples include [protractor scripts](//docs.angularjs.org/api/ng/service/$http#example))
+
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## Bi-Directional Data Binding
+
+					A key concept of AngualarJS is to automate data updates (e.g.- no calling partialRefresh events, the data _lives in the DOM_, it it automates the update)
+
+					<div class="row">
+						<div class="col-xs-6 left">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/0a0vga0k/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+						<div class="col-xs-6 right">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/0a0vga0k/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+					</div>
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## Templating (client-side dynamic content)
+
+					<div class="row">
+						<div class="col-xs-6 left">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/qf5trmkn/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+						<div class="col-xs-6 right">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/qf5trmkn/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+					</div>
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## Filtering (simple conversions without DIY)
+
+					You can always make custom ones (same as directives.)
+
+					<div class="row">
+						<div class="col-xs-6 left">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/L3tykzrt/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+						<div class="col-xs-6 right">
+							<iframe width="100%" height="300" src="http://jsfiddle.net/edm00se/L3tykzrt/embedded/html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						</div>
+					</div>
+
+					This was the first JavaScript I _wrote_, just to set a _Date()_ object into [scope](//docs.angularjs.org/guide/scope).
+
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					## Just a Taste
+
+					I could go on forever with simple examples. The bottom line is:
+
+					> If you can automate as much as possible with a framework that fits your needs, do it!
+
+					Why reinvent the wheel? We're developers, we automate code all the time. It's just that this time, we have a lot of handy tools already available for us.
+
+				</script>
+			</section>
+
+			<section data-markdown><!-- Discussion! -->
+				<script type="text/template">
+					## Discussion: JS Frameworks
+
+					* Keep on target with JS frameworks
+					* Do you use a JS framework (or library)?
+					* What are your positive/negative experiences?
+					* Lessons learned
+					* What made any one work best for you?
+
+				</script>
+			</section>
+		</section>
+		
+		<!-- Wrap it up -->
+		<section><!-- Links -->
+			<section data-markdown>
+				<script type="text/template">
+					## Links About Me
+
+					<img src="img/deadpool_me.jpg" class="img-center img-half" />
+					
+					* [@edm00se](//twitter.com/edm00se)
+					* [my Dev Blog](//edm00se.io/)
+					* [about.me](//about.me/EricMcCormick)
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/templte">
+					## General Links
+					
+					* [Stack Overflow](//stackoverflow.com/tags/xpages)
+					* [OpenNTF](//openntf.org)
+					* [XSnippets](//openntf.org/XSnippets.nsf)
+					* Many, many, many blogs by developers across the spectrum
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/templte">
+					## Java/MVC Links
+					
+					* [Jesse Gallagher](//frostillic.us/blog/)'s [Building an App with the Frostillic.us Framework](//frostillic.us/blog/posts/D815DC7ED059395885257D6B00001006)
+					* [Frostillic.us Framework on GitHub](//github.com/jesse-gallagher/XPages-Scaffolding/)
+					* [Pipalia MVC blog posts](//www.pipalia.co.uk/tag/mvc-2/)
+					* all managed bean information (it forces a simplified segregation between the XPage and logic of your code)
+					* this may be the [best kept secret](//www.youtube.com/watch?v=h4vbPfLd6c0&t=1m01s) in XPages development (we know it's a good practice, we just need to do it!)
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/templte">
+					## Bootstrap Links
+					
+					* [Bootstrap4XPages](//bootstrap4xpages.com/)
+					* [Daniel Friedrich's Blog with a more custom approach](//xpagesandme.wordpress.com/)
+					* [Notes in 9 136: Using XPages with Bootstrap 3 and FontAwesome](//www.notesin9.com/2014/01/17/notesin9-136-using-xpages-with-bootstrap-3-and-fontawesome/)
+					* [Bootsnipp](//bootsnipp.com/)
+					* [XControls](//xcontrols.org/) Teamstudio UnPlugged compatible XPage controls based on [BootCards](//bootcards.org/)
+					* Many, many more
+					
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/templte">
+					## AngularJS Links
+					
+					* [Marky Roden's AngularJS blog series](//xomino.com/category/angular-in-xpages/)
+					* [Mark Leusink's blog](//linqed.eu/)
+					* [Sven Hasselbach's blog](//hasselba.ch/blog/?cat=50)
+					* [AngularJS PhoneCat tutorial](//docs.angularjs.org/tutorial)
+					* [Shaping UP with AngularJS](//campus.codeschool.com/courses/shaping-up-with-angular-js/intro) (a free CodeSchool course, sponsored by Google)
+					* [Egghead.io](//egghead.io) (site with free and subscription videos on AngularJS and other tools)
+					
+					
+				</script>
+			</section>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+				## Survey
+
+				<iframe src="https://docs.google.com/forms/d/1vVN3mMGF3WLxwYUekN-OyL373QduDKoneSM1Zw_TZO0/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+			</script>
+		</section>
+
+		<section data-markdown><!-- Close out -->
+			<script type="text/template">
+				## Bring It Home
+				
+				#### Closing Discussion
+
+				#### Questions?
+				
+			</script>
+		</section>
+		
+	</div>
+
+</div>
+
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="components/reveal.js/js/reveal.js"></script>
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+			fragments: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: './components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: './components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				//{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: './components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: './components/reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: './components/reveal.js/plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+    <!-- Socket.io client-->
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <!-- <script src="/js/config.js"></script> -->
+    <script>
+            (function(){
+              Reveal.initialize({
+                history: true
+              });
+              
+              var socket = io.connect(host);
+              socket.on('slidechanged', function (data) {
+                Reveal.slide(data.indexh, data.indexv, data.indexf);
+              });
+              
+            })();
+        </script>
+</body>
+</html>
