@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-	"publish": "grunt && git subtree push --prefix dist origin gh-pages"
+    "publish": "grunt && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
