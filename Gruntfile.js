@@ -64,14 +64,6 @@ module.exports = function(grunt) {
 			}
 		}
 	},
-	/*
-	// failing out on some project/.build file not found, no documentation
-	buildGhPages: {
-		ghPages: {
-			// Leave empty if you just want to run the defaults
-		}
-	}
-	*/
 
   });
 
@@ -79,7 +71,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ejs-static');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-rewrite');
-  //grunt.loadNpmTasks('grunt-build-gh-pages');
 
   // CREATE TASKS
   grunt.registerTask('default', ['ejs_static:optimize','copy:main','rewrite:main']);
