@@ -4,6 +4,8 @@ This is the ~~Session~~ Chalk Talk for Eric McCormick's Chalk Talk, Chalk203: Fr
 
 Chalk Talks are guided discussions, with room AV specifically disallowed. This un-presentation is meant as a reference material for attendees, with many excellent cited resources.
 
+You can view the stand-alone version of the slide deck as a reveal.js presentation from the GH Pages path for this repository, [edm00se.github.io/BlueChalkySoup](https://edm00se.github.io/BlueChalkySoup/).
+
 ### Setup
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button_x2.png)](https://bluemix.net/deploy?repository=https://github.com/edm00se/BlueChalkySoup)
