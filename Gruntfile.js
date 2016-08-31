@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	  /*
       preview: {
         options: {
-          dest: 'dist/preview',
+          dest: 'docs/preview',
           path_to_data: './data.json',
           path_to_layouts: './views',
           index_page: 'index',
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 	  */
       optimize: {
         options: {
-          dest: 'dist',
+          dest: 'docs',
           path_to_data: './data.json',
           path_to_layouts: './views',
           index_page: 'index',
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'public/',
 					src: ['**'],
-					dest: 'dist/'
+					dest: 'docs/'
 				}
 			]
 		}
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 	
 	rewrite: {
 		main: {
-			src: 'dist/index.html',
+			src: 'docs/index.html',
 			editor: function(contents,filePath){
 				return contents
 					.replace('/lib/font-awesome-4.2.0/css/font-awesome.min.css',
