@@ -10,6 +10,12 @@
 	margin-left: auto !important;
 	margin-right: auto !important;
 }
+.reveal section img.profile {
+  background-color: white;
+  border: initial;
+  padding: 0.25rem;
+  max-width: 320px;
+}
 .reveal .slides > section, .reveal .slides > section > section {
 	padding-top: initial !important;
 }
