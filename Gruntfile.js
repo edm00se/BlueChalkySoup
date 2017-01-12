@@ -9,22 +9,9 @@ module.exports = function(grunt) {
 
     // configure plugin with information
     ejs_static: {
-	  /*
-      preview: {
-        options: {
-          dest: 'dist/preview',
-          path_to_data: './data.json',
-          path_to_layouts: './views',
-          index_page: 'index',
-          parent_dirs: false,
-          underscores_to_dashes: true,
-          file_extension: '.html'
-        }
-      },
-	  */
       optimize: {
         options: {
-          dest: 'dist',
+          dest: 'docs',
           path_to_data: './data.json',
           path_to_layouts: './views',
           index_page: 'index',
@@ -34,7 +21,7 @@ module.exports = function(grunt) {
         }
       }
     },
-	
+
 	copy: {
 		main: {
 			// includes files within public and its sub-directories
@@ -43,19 +30,17 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'public/',
 					src: ['**'],
-					dest: 'dist/'
+					dest: 'docs/'
 				}
 			]
 		}
 	},
-	
+
 	rewrite: {
 		main: {
-			src: 'dist/index.html',
+			src: 'docs/index.html',
 			editor: function(contents,filePath){
 				return contents
-					.replace('/lib/font-awesome-4.2.0/css/font-awesome.min.css',
-						'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css')
 					.replace('<script src="/socket.io/socket.io.js"></script>',
 						'<!-- <script src="/socket.io/socket.io.js"></script> -->')
 					.replace('<script src="/js/config.js"></script>',

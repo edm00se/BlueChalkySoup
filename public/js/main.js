@@ -1,5 +1,9 @@
 (function(){
-  var socket = io.connect(host);
+  var proto = window.location.protocol;
+  var h = window.location.host;
+  var val = proto+'//'+h;
+  console.log(val);
+  var socket = io.connect(val);
   Reveal.initialize({
     history: true
   });
@@ -19,10 +23,10 @@
   Reveal.addEventListener("fragmenthidden", notifyServer);
   /** end - only in master.js **/
 
-  // Move to corresponding slide/ frament on receiving 
+  // Move to corresponding slide/ frament on receiving
   // slidechanged event from server
   socket.on('slidechanged', function (data) {
     Reveal.slide(data.indexh, data.indexv, data.indexf);
   });
-  
+
 })();
