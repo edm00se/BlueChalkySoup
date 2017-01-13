@@ -19,6 +19,9 @@
 .reveal .slides > section, .reveal .slides > section > section {
 	padding-top: initial !important;
 }
+.reveal .slides section pre code {
+  text-align: left !important;
+}
 .row {
 	width: 100%;
 }

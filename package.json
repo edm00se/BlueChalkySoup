@@ -1,24 +1,36 @@
 {
   "name": "BlueChalkySoup",
   "description": "This is the ~~Session~~ Chalk Talk for Eric McCormick's Chalk Talk, Chalk203: From Soup to Sandwich, Making MVC Java Classes and Front-End Development Work For You, presented at IBM ConnectED 2015.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edm00se/preso-base.git"
+    "url": "git+https://github.com/edm00se/BlueChalkySoup.git"
   },
   "author": "Eric McCormick (https://ericmccormick.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/edm00se/preso-base/issues"
+    "url": "https://github.com/edm00se/BlueChalkySoup/issues"
   },
-  "homepage": "https://github.com/edm00se/preso-base#readme",
+  "homepage": "https://github.com/edm00se/BlueChalkySoup#readme",
   "scripts": {
     "start": "node app.js",
     "clean": "rimraf docs",
     "build": "npm run clean && grunt",
     "postinstall": "bower",
     "dev": "echo \"?\"",
+    "static-preview": "http-server --silent ./docs/",
+    "ensure-docs": "path-exists docs && echo \"docs/ exists\" || grunt",
+    "test": "npm run ensure-docs && concurrently --kill-others \"npm run static-preview\" \"mocha\""
+  },
+  "private": false,
+  "scripts": {
+    "start": "node app.js",
+    "clean": "rimraf docs",
+    "build": "npm run clean && grunt",
+    "ensure-components-dir": "mkdirp public/components",
+    "postinstall": "npm run ensure-components-dir && ncp node_modules/reveal.js public/components/reveal.js/.",
+    "dev": "concurrently --kill-others \"npm start\" \"browser-sync start -p http://localhost:5001/ --files views\"",
     "static-preview": "http-server --silent ./docs/",
     "ensure-docs": "path-exists docs && echo \"docs/ exists\" || grunt",
     "test": "npm run ensure-docs && concurrently --kill-others \"npm run static-preview\" \"mocha\""
@@ -30,11 +42,15 @@
     "ejs": "2.5.2",
     "express": "4.14.0",
     "http-auth": "3.1.1",
+    "mkdirp": "0.5.1",
     "morgan": "1.7.0",
+    "ncp": "2.0.0",
+    "reveal.js": "3.3.0",
     "serve-favicon": "2.3.2",
     "socket.io": "1.6.0"
   },
   "devDependencies": {
+    "browser-sync": "2.18.2",
     "chai": "3.5.0",
     "chai-files": "1.4.0",
     "chai-http": "3.0.0",

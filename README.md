@@ -2,13 +2,15 @@
 
 This is a reveal.js based presentation, capable of both live serving with joined slide state pushed from a `/control` endpoint via websocket and basic auth, or generated into a static site format in `docs/`, making it easy for simple deploy to GitHub Pages (or other static host) for permanence.
 
+This project has been updated to have been re-created, save for presentation content, via the [presto-preso](https://www.npmjs.com/package/generator-presto-preso) [yeoman](http://yeoman.io/) generator.
+
 ### Commands
 
-- `git clone https://github.com/edm00se/BlueChalkySoup.git`
-- `cd BlueChalkySoup`
+- clone
 - `npm install`
 - `npm start` runs the server version, with web sockets enabled and `/control` route
 - `npm run build` builds a static copy into `docs/`, making it easy to host on GitHub Pages
+- `npm run dev` runs a local preview server with live-reload on changes to `views/*.ejs`
 
 #### Local Preview
 
@@ -19,7 +21,8 @@ When run locally, unless an environment variable is set, the application will ru
 On the server, the app will try to pull, in order, the port number from an environment variable set of `PORT` or `VCAP_APP_PORT`.
 
 ##### Controlling the Presentation
-The node app uses basic auth to protect the _/control_ end point. By default, these credentials (which are embedded in the _/routes/index.js_ file). Their defaults (which you are encouraged to change):
+The node app uses basic auth to protect the _/control_ end point. By default, these credentials (which are embedded in the _/routes/index.js_ file). The values are settable via the `CONTROLLER_NAME` and `CONTROLLER_PW` environment variables, with defaults of :
+
 ```
 username: admin
 password: someAmazingP@$$w0rd
@@ -42,4 +45,3 @@ At best I was getting 2 / 4 features, so I hacked together this, then eventually
 ## License
 
 MIT
-

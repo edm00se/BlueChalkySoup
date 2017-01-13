@@ -5,11 +5,11 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="description" content="an IBM ConnectED 2015 Chalk Talk un-session">
+	<meta name="description" content="chalk talk soup presentation as given by Eric McCormick in Chalk203: &#34;From Soup to Sandwich: Making MVC Java Classes and Front-End Development Work for You&#34; at IBM ConnectED 2015">
 	<meta name="author" content="Eric McCormick">
 	<title>Blue Chalky Soup</title>
 	<!-- Font Awesome! -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="components/reveal.js/css/reveal.css">
 	<link rel="stylesheet" href="components/reveal.js/css/theme/night.css" id="theme">
 	<!-- Code syntax highlighting -->
@@ -35,42 +35,59 @@
 
 	<!-- Any section element inside of this container is displayed as a slide -->
 	<div class="slides">
-		
+
 		<section data-markdown>
 			<script type="text/template">
 				## ~~From Soup to Sandwich~~
 				## Chalky Soup
-				
+
 
 				#### Making MVC Java Classes and Front-end Development Work for You
 				<br />
-				
-				
+
+
 				Presented, _with no room AV_,
-				
+
 				[by Eric McCormick](//twitter.com/edm00se)
 
 			</script>
 		</section>
-		
+
+		<section data-markdown>
+			<script type="text/template">
+				## Who Am I?
+
+				##### Eric McCormick
+
+				<img src="https://avatars.githubusercontent.com/u/622118?v=3" class="img-circle img-responsive img-center profile"  />
+
+				A full-stack developer, I have an passion for application structure, framework adoption, automation in tooling and deployment.
+
+				<br />
+				[<i class="fa fa-twitter" aria-hidden="true"></i>/edm00se](https://twitter.com/edm00se)&nbsp;&nbsp;&nbsp;[<i class="fa fa-github" aria-hidden="true"></i>/edm00se](https://github.com/edm00se)<br />
+				[<i class="fa fa-pencil" aria-hidden="true"></i> Eric McCormick](https://ericmccormick.io)
+
+			</script>
+		</section>
+
 		<section>
 			<section data-markdown>
 				<script type="text/template">
 					## This ~~Session~~ Is A Chalk Talk
-					
+
 					>"A ConnectED ChalkTalk is a relaxed,  interactive discussion, with no provided media or AV. The purpose of the discussion is to gather input, feedback, and learn from each other."
-					
+
 					I am meant to facilitate a discussion. These slides will further as a supplementary aid, just not a primary visual aid.
-					
+
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/template">
 					## This Chalk Talk
-					
+
 					Format for this Chalk Talk (7am-7:45am):
-					
-					
+
+
 					| Sequence  		| Speaker		| Time			|
 					| ------------- 	| ------------- | ------------- |
 					| Introduction  	| Eric			| 3 min 		|
@@ -82,29 +99,12 @@
 					| 3: AngularJS		| Eric			| 5 min			|
 					| Discussion		| Group			| 5 min			|
 					| Wrap Up, Q&A		| Eric/Group	| 10 min		|
-					
+
 				</script>
 			</section>
 		</section>
 		<!-- Introduction -->
 		<section>
-			<section data-markdown><!-- Who I am -->
-				<script type="text/template">
-					## Who Am I?
-					
-					<p class="fragment grow">Eric McCormick</p>
-
-					<img src="img/profile.jpg" class="img-circle img-responsive img-center"  />
-
-					Twitter: [@edm00se](//twitter.com/edm00se)<br />
-					Blog: [edm00se.io](//edm00se.io)<br />
-					XPages developer since ‘11<br />
-					Java developer on and off since ‘02<br />
-
-					Experimented with WebSphere in college
-
-				</script>
-			</section>
 			<section data-markdown>
 				<script type="text/template">
 					&nbsp;
@@ -123,7 +123,7 @@
 					3. Making all application logic and data consistently accessible across separate, but organic, systems
 					4. Making contracted development work more easily performed
 					5. Automating everything I can
-					
+
 				</script>
 			</section>
 			<section data-markdown>
@@ -139,7 +139,7 @@
 		<section data-markdown><!-- Audience assumptions -->
 			<script type="text/template">
 				## Target Audience
-				
+
 				You should be a Domino/XPage developer with a solid understanding of the XPages development and the Notes/Domino API.
 
 				I assume you know:
@@ -148,7 +148,7 @@
 				* what can be a data source in an XPage
 				* what a CSS framework is (what Bootstrap3 is/does)
 				* what a client-side JavaScript framework is ([AngularJS](//angularjs.org/), [Ember](//emberjs.com/), [Backbone](//backbonejs.org/), [Dojo](//dojotoolkit.org/), etc)
-				
+
 			</script>
 		</section>
 		<section>
@@ -156,7 +156,7 @@
 			<section data-markdown>
 				<script type="text/template">
 					## Topics
-					
+
 					#### Segregation of Application Into Service Layers
 
 					* a decoupling of the layers of your application into micro-services
@@ -165,7 +165,7 @@
 					* keeps styling and presentation out of the logic
 
 					This helps to keep all your code readable by not just yourself, but others.
-					
+
 				</script>
 			</section>
 			<section data-markdown>
@@ -179,9 +179,9 @@
 					* servlets (RESTful or otherwise), XPage bindings (simple, EL to bean, or data object)
 						* provides **interface** to
 					* UI layer (where the client-side logic lives)
-					
-					
-					
+
+
+
 				</script>
 			</section>
 		</section>
@@ -189,9 +189,9 @@
 			<section data-markdown>
 				<script type="text/template">
 					## What [M-V-C](//edm00se.io/xpages/unraveling-the-mvc-mysteries) Is
-					
+
 					A great development architectural practice, which segregates your code into aspects, which govern solely:
-					
+
 					* the interactions of your data objects with the data store (Model)
 					* the interaction of your data objects with your presentation layer (View)
 					* the interaction of your **application logic** (Controller, where the rubber meets the road)
@@ -239,29 +239,7 @@
 					## Example
 					Simple validation via managed bean.
 
-					```java
-					
-					package com.eric.sample
-
-					import com.everything.i.need.*;
-
-					public class AwesomeController implements Serializable {
-						...
-						private String someAwesomeProperty;
-
-						public AwesomeController(){}
-
-						public boolean validateMyProperty(){
-							boolean tmpVal = false;
-							if( this.someAwesomeProperty != null ){
-								tmpVal = true;
-							}
-							return tmpVal;
-						}
-
-					}
-
-					```
+					<iframe width="100%" height="525" src="https://jsfiddle.net/edm00se/L3pk57pq/embedded/result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 				</script>
 			</section>
@@ -271,32 +249,20 @@
 
 					Binding to a Control in an XPage
 
-					```xml
-
-					< ?xml version="1.0" encoding="UTF-8">
-					<xp:view>
-						xmlns:xp="http://www.ibm.com/xsp/core">
-						<xp:inputText
-							id="inputText"
-							value="#{myBean.someAwesomeProperty}"
-							validator="#{myBean.validateMyProperty}">
-						</xp:inputText>
-					</xp:view>
-
-					```
+					<iframe width="100%" height="300" src="https://jsfiddle.net/edm00se/g1pLphcn/embedded/result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/template">
 					## But Why Start With a Managed Bean?
-					
+
 					Your application logic is now easily used in:
 
 					* XPages<!-- .element: class="fragment" data-fragment-index="1" -->
 					* a RESTful servlet<!-- .element: class="fragment" data-fragment-index="2" -->
 					* other service<!-- .element: class="fragment" data-fragment-index="3" -->
-					
+
 					Your code will be [more easily maintained, read, and ported to other systems or applications](//frostillic.us/blog/posts/E8C88D2333F751BC85257DB00080AF32).
 
 				</script>
@@ -434,7 +400,7 @@
 				</script>
 			</section>
 		</section>
-		
+
 		<!-- AngularJS/CSJS -->
 		<section>
 			<section data-markdown>
@@ -458,7 +424,7 @@
 					Many of these frameworks take an MVC/MVVM/MV* approach. For the same reasons you should structure your code into either MVC or MVC-like structures are the same reason you should do so for your client-side code.
 
 					It's not just for compartmentalization, it's for sanity.
-					
+
 					[Quora discussion](//www.quora.com/When-does-it-make-sense-to-use-an-MVC-framework-for-JavaScript) on the why and confusion of picking a framework/library.
 
 				</script>
@@ -556,7 +522,7 @@
 				</script>
 			</section>
 		</section>
-		
+
 		<!-- Wrap it up -->
 		<section><!-- Links -->
 			<section data-markdown>
@@ -564,61 +530,61 @@
 					## Links About Me
 
 					<img src="img/deadpool_me.jpg" class="img-center img-half" />
-					
+
 					* [@edm00se](//twitter.com/edm00se)
 					* [my Dev Blog](//edm00se.io/)
 					* [about.me](//about.me/EricMcCormick)
-					
+
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/templte">
 					## General Links
-					
+
 					* [Stack Overflow](//stackoverflow.com/tags/xpages)
 					* [OpenNTF](//openntf.org)
 					* [XSnippets](//openntf.org/XSnippets.nsf)
 					* Many, many, many blogs by developers across the spectrum
-					
+
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/templte">
 					## Java/MVC Links
-					
+
 					* [Jesse Gallagher](//frostillic.us/blog/)'s [Building an App with the Frostillic.us Framework](//frostillic.us/blog/posts/D815DC7ED059395885257D6B00001006)
 					* [Frostillic.us Framework on GitHub](//github.com/jesse-gallagher/XPages-Scaffolding/)
 					* [Pipalia MVC blog posts](//www.pipalia.co.uk/tag/mvc-2/)
 					* all managed bean information (it forces a simplified segregation between the XPage and logic of your code)
 					* this may be the [best kept secret](//www.youtube.com/watch?v=h4vbPfLd6c0&t=1m01s) in XPages development (we know it's a good practice, we just need to do it!)
-					
+
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/templte">
 					## Bootstrap Links
-					
+
 					* [Bootstrap4XPages](//bootstrap4xpages.com/)
 					* [Daniel Friedrich's Blog with a more custom approach](//xpagesandme.wordpress.com/)
 					* [Notes in 9 136: Using XPages with Bootstrap 3 and FontAwesome](//www.notesin9.com/2014/01/17/notesin9-136-using-xpages-with-bootstrap-3-and-fontawesome/)
 					* [Bootsnipp](//bootsnipp.com/)
 					* [XControls](//xcontrols.org/) Teamstudio UnPlugged compatible XPage controls based on [BootCards](//bootcards.org/)
 					* Many, many more
-					
+
 				</script>
 			</section>
 			<section data-markdown>
 				<script type="text/templte">
 					## AngularJS Links
-					
+
 					* [Marky Roden's AngularJS blog series](//xomino.com/category/angular-in-xpages/)
 					* [Mark Leusink's blog](//linqed.eu/)
 					* [Sven Hasselbach's blog](//hasselba.ch/blog/?cat=50)
 					* [AngularJS PhoneCat tutorial](//docs.angularjs.org/tutorial)
 					* [Shaping UP with AngularJS](//campus.codeschool.com/courses/shaping-up-with-angular-js/intro) (a free CodeSchool course, sponsored by Google)
 					* [Egghead.io](//egghead.io) (site with free and subscription videos on AngularJS and other tools)
-					
-					
+
+
 				</script>
 			</section>
 		</section>
@@ -636,14 +602,17 @@
 		<section data-markdown><!-- Close out -->
 			<script type="text/template">
 				## Bring It Home
-				
+
 				#### Closing Discussion
 
 				#### Questions?
-				
+
+				<br />
+				[<i class="fa fa-github" aria-hidden="true"></i>/edm00se/ama](https://github.com/edm00se/ama)
+
 			</script>
 		</section>
-		
+
 	</div>
 
 </div>
@@ -668,7 +637,6 @@
 				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 				{ src: './components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 				{ src: './components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				//{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 				{ src: './components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				{ src: './components/reveal.js/plugin/zoom-js/zoom.js', async: true },
 				{ src: './components/reveal.js/plugin/notes/notes.js', async: true }
@@ -678,18 +646,21 @@
 	</script>
     <!-- Socket.io client-->
     <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <!-- <script src="/js/config.js"></script> -->
     <script>
             (function(){
               Reveal.initialize({
                 history: true
               });
-              
-              var socket = io.connect(host);
+
+              var proto = window.location.protocol;
+              var h = window.location.host;
+              var val = proto+'//'+h;
+              console.log(val);
+              var socket = io.connect(val);
               socket.on('slidechanged', function (data) {
                 Reveal.slide(data.indexh, data.indexv, data.indexf);
               });
-              
+
             })();
         </script>
 </body>

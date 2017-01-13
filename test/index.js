@@ -1,18 +1,18 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var child = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const child = require('child_process');
 
-var chai = require('chai');
-var chaiFiles = require('chai-files');
-var chaiHttp = require('chai-http');
+const chai = require('chai');
+const chaiFiles = require('chai-files');
+const chaiHttp = require('chai-http');
 chai.use(chaiFiles);
 chai.use(chaiHttp);
 
-var expect = chai.expect;
-var file = chaiFiles.file;
-var dir = chaiFiles.dir;
+const expect = chai.expect;
+const file = chaiFiles.file;
+const dir = chaiFiles.dir;
 
 describe('app', function(){
 
