@@ -14,6 +14,8 @@ const expect = chai.expect;
 const file = chaiFiles.file;
 const dir = chaiFiles.dir;
 
+const server = require('../app');
+
 describe('app', function(){
 
   describe('static presentation', function(){
@@ -25,7 +27,7 @@ describe('app', function(){
 
   describe('server presentation', function(done){
     it('should serve successfully', function(){
-      chai.request('http://localhost:8080')
+      chai.request(server)
         .get('/')
         .end(function (err, res) {
           expect(err).to.be.null;
