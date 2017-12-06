@@ -22,7 +22,7 @@
     "dev": "concurrently --kill-others \"npm start\" \"browser-sync start -p http://localhost:5001/ --files views\"",
     "static-preview": "http-server --silent ./docs/",
     "ensure-docs": "path-exists docs && echo \"docs/ exists\" || grunt",
-    "test": "npm run ensure-docs && concurrently --kill-others \"npm run static-preview\" \"mocha --exit\""
+    "test": "npm run ensure-docs && concurrently --kill-others \"npm run static-preview\" \"mocha --exit\" --success first"
   },
   "dependencies": {
     "body-parser": "1.18.2",
@@ -34,7 +34,7 @@
     "mkdirp": "0.5.1",
     "morgan": "1.9.0",
     "ncp": "2.0.0",
-    "reveal.js": "3.5.0",
+    "reveal.js": "3.6.0",
     "serve-favicon": "2.4.5",
     "socket.io": "2.0.4"
   },
@@ -43,7 +43,7 @@
     "chai": "4.1.2",
     "chai-files": "1.4.0",
     "chai-http": "3.0.0",
-    "concurrently": "3.5.0",
+    "concurrently": "3.5.1",
     "grunt": "1.0.1",
     "grunt-cli": "1.2.0",
     "grunt-contrib-clean": "1.1.0",

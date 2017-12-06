@@ -1,4 +1,4 @@
-// our wrapper function (required by grunt and its plugins)
+// this is used exclusively for generating the static site from EJS
 module.exports = function(grunt) {
 
   // CONFIGURE GRUNT
