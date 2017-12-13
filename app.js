@@ -11,24 +11,27 @@ const app = express();
 
 // view engine setup
 
-app.set('views', path.join(__dirname, 'views'))
-    .set('view engine', 'ejs')
-    .use(favicon(path.join(__dirname, '/public/img/favicon.ico')))
-    .use(logger('dev'))
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({
+app
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .use(favicon(path.join(__dirname, '/public/img/favicon.ico')))
+  .use(logger('dev'))
+  .use(bodyParser.json())
+  .use(
+    bodyParser.urlencoded({
       extended: true
-    }))
-    .use(cookieParser())
-    .use(express.static(path.join(__dirname, 'public')))
-    .use('/', routes);
+    })
+  )
+  .use(cookieParser())
+  .use(express.static(path.join(__dirname, 'public')))
+  .use('/', routes);
 
 const server = http.Server(app),
   io = socketio.listen(server),
   port = process.env.PORT || process.env.VCAP_APP_PORT || 5001; // usual Node.js port environment, Bluemix port environment, static 5001 as local failover
 
 // / catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   let err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -39,7 +42,7 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
+  app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -51,7 +54,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
@@ -61,14 +64,14 @@ app.use(function (err, req, res, next) {
 });
 
 io.set('origins', '*:*'); // if you're running on something other than localhost, set your valid server name to listen on here!
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', socket => {
   socket.emit('message', 'Welcome to Revealer');
-  socket.on('slidechanged', function (data) {
+  socket.on('slidechanged', data => {
     socket.broadcast.emit('slidechanged', data);
   });
 });
 
-server.listen(port, function () {
+server.listen(port, () => {
   console.log('Express server listening on port ' + port);
 });
 

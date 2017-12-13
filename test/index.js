@@ -16,26 +16,24 @@ const dir = chaiFiles.dir;
 
 const server = require('../app');
 
-describe('app', function(){
-
-  describe('static presentation', function(){
-    it('has a generated an html file in docs/', function(){
+describe('app', () => {
+  describe('static presentation', () => {
+    it('has a generated an html file in docs/', () => {
       expect(dir('docs')).to.exist;
       expect(file(path.join(__dirname, '../docs/index.html'))).to.exist;
     });
   });
 
-  describe('server presentation', function(done){
-    it('should serve successfully', function(){
-      chai.request(server)
+  describe('server presentation', done => {
+    it('should serve successfully', () => {
+      chai
+        .request(server)
         .get('/')
-        .end(function (err, res) {
+        .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
           done();
         });
     });
-
   });
-
 });
