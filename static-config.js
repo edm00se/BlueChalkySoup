@@ -1,8 +1,9 @@
 module.exports = {
   index: {
-    layout: "index",
-	  title: "Blue Chalky Soup",
-    description: "Static generated version of the BlueChalkySoup presentation as given by Eric McCormick in Chalk203: \"From Soup to Sandwich: Making MVC Java Classes and Front-end Development Work for You\" at the IBM ConnectED 2015.",
-    keywords: "static, reveal, mvc, java, json, angular, jquery, dojo, xpages"
+    layout: 'index',
+    title: 'Blue Chalky Soup',
+    description:
+      'Static generated version of the BlueChalkySoup presentation as given by Eric McCormick in Chalk203: "From Soup to Sandwich: Making MVC Java Classes and Front-end Development Work for You" at the IBM ConnectED 2015.',
+    keywords: 'static, reveal, mvc, java, json, angular, jquery, dojo, xpages'
   }
-}
+};

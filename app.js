@@ -11,17 +11,20 @@ const app = express();
 
 // view engine setup
 
-app.set('views', path.join(__dirname, 'views'))
-    .set('view engine', 'ejs')
-    .use(favicon(path.join(__dirname, '/public/img/favicon.ico')))
-    .use(logger('dev'))
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({
+app
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .use(favicon(path.join(__dirname, '/public/img/favicon.ico')))
+  .use(logger('dev'))
+  .use(bodyParser.json())
+  .use(
+    bodyParser.urlencoded({
       extended: true
-    }))
-    .use(cookieParser())
-    .use(express.static(path.join(__dirname, 'public')))
-    .use('/', routes);
+    })
+  )
+  .use(cookieParser())
+  .use(express.static(path.join(__dirname, 'public')))
+  .use('/', routes);
 
 const server = http.Server(app),
   io = socketio.listen(server),
