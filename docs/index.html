@@ -10,17 +10,17 @@
 	<title>Preso Demo</title>
 	<!-- Font Awesome! -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/reveal.css">
-	<link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/css/theme/night.css" id="theme">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/night.css" id="theme">
 	<!-- Code syntax highlighting -->
-	<link rel="stylesheet" href="https://unpkg.com/reveal.js@3.6.0/lib/css/zenburn.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/lib/css/zenburn.min.css">
 	<link rel="stylesheet" href="css/custom.css">
 	<!-- Printing and PDF exports -->
 	<script>
 		var link = document.createElement( 'link' );
 		link.rel = 'stylesheet';
 		link.type = 'text/css';
-		link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.6.0/css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.6.0/css/print/paper.css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/pdf.css' : 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/print/paper.css';
 		document.getElementsByTagName( 'head' )[0].appendChild( link );
 	</script>
 
@@ -618,8 +618,8 @@
 </div>
 
 
-<script src="https://unpkg.com/headjs@1.0.3/dist/1.0.0/head.min.js"></script>
-<script src="https://unpkg.com/reveal.js@3.6.0/js/reveal.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
 <script>
 	// Full list of configuration options available at:
 	// https://github.com/hakimel/reveal.js#configuration
@@ -636,11 +636,11 @@
 		dependencies: [
 			// { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 			// Interpret Markdown in <section> elements
-            { src: 'https://unpkg.com/reveal.js@3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: 'https://unpkg.com/reveal.js@3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: 'https://unpkg.com/reveal.js@3.6.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: 'https://unpkg.com/reveal.js@3.6.0/plugin/zoom-js/zoom.js', async: true },
-            { src: 'https://unpkg.com/reveal.js@3.6.0/plugin/notes/notes.js', async: true }
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/zoom-js/zoom.min.js', async: true },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/plugin/notes/notes.min.js', async: true }
 		]
 	});
 
